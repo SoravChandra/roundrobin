@@ -20,6 +20,9 @@ bool a = true;
 for(int o=0;i<n;i+++)
 {
 //if burst time of a process is greater than 0 thwn ony need to process further
+if(r_bt[i]>0)
+{
+done = false;
 if(r_bt[i]>quantum)
 {
 t += quantum;
@@ -32,3 +35,23 @@ t = t + r_bt[i];
 wt[i] = t - bt[i];
 r_bt[i] = 0;
 }
+}
+}
+if( done == true)
+break;
+}
+}
+void ftat()
+{
+int proc[],n,bt[],wt[],tat[];
+for(int i=0;i<n;i++)
+tat[i] = bt[i]+ wt[i];
+}
+void avgt()
+{
+int proc[],n,bt[],quantum;
+int wt[n],tat[n],total_wt = 0,total_tat=0;
+findwaitingtime(proc,n,bt,wt,quantum);
+findturnaroundtime(proc,n,bt,wt,tat);
+printf("processes \n");
+printf("
