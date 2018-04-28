@@ -1,57 +1,112 @@
 #include<stdio.h>
-#include<conio.h>
-#include<sys/types.h>
-#include<stdlib.h>
-#include<string.h>
+
+void Iteration(int a[],int size,int ts, int x,char pn[]);
 
 int main()
 {
-void waitingt()
+int et[30],ts,n,i,x=0,tot=0;
+char pn[10][10];
+
+printf("Enter the no of processes:");
+scanf("%d",&n);
+
+printf("Enter the time quantum:");
+scanf("%d",&ts);
+
+for(i=0;i<n;i++)
 {
-int p{},n,bt[],wt[],quantum,i;
-int r_bt[n];
-for(int i=0;i<n:i++)
-r_bt[i]=bt[i];
-int t=0; //current time
-while(1)
-{
-bool a = true;
-//traverse all processes one by one repeadly
-for(int o=0;i<n;i+++)
-{
-//if burst time of a process is greater than 0 thwn ony need to process further
-if(r_bt[i]>0)
-{
-done = false;
-if(r_bt[i]>quantum)
-{
-t += quantum;
-r_bt[i] -= quantum;
+printf("enter process name & estimated time:");
+scanf("%s %d",pn[i],&et[i]);
 }
-// if burst time is smaller than or equal to quantum last cycle for this process
-else
+
+printf("The processes are:");
+for(i=0;i<n;i++)
+printf("process %d: %s\n",i+1,pn[i]);
+
+for(i=0;i<n;i++)
+tot=tot+et[i];
+
+while(x!=tot)
 {
-t = t + r_bt[i];
-wt[i] = t - bt[i];
-r_bt[i] = 0;
+	
+  for(i=0;i<n;i++)
+  {
+  	if(x==6 || x==12 || x==18)
+  		 Iteration(et,n,ts,x,pn[10]);
+	else
+	{
+		if(et[i]>ts)
+        {
+           x=x+ts;
+           printf("\n %s -> %d",pn[i],ts);
+           et[i]=et[i]-ts;
+        }
+	    else
+	        if((et[i]<=ts)&&et[i]!=0)
+            {
+                x=x+et[i];
+                printf("\n %s -> %d",pn[i],et[i]);
+                et[i]=0;
+	        }
+	  }  
+  }
 }
+
+printf("\n Total Estimated Time:%d",x);
 }
-}
-if( done == true)
-break;
-}
-}
-void ftat()
+
+void Iteration(int a[],int size,int ts, int x,char pn[])
 {
-int proc[],n,bt[],wt[],tat[];
-for(int i=0;i<n;i++)
-tat[i] = bt[i]+ wt[i];
+	  int largest1,largest2;
+      
+        largest1 = a[0];
+        for(int H = 0; H< size; H++)
+		{
+            if (a[H]>largest1) 
+			{
+               largest1 = a[H];
+            }
+        }
+        
+        largest2 = a[0];
+        for (int g=1;g<size;g++) 
+		{
+            if(a[g]>largest2 && a[g]<largest1){
+             largest2 = a[g];
+			 }
+        }
+		
+	   
+		if(a[largest1]>ts)
+        {
+           x=x+ts;
+           printf("\n %s -> %d",pn[largest1],ts);
+           a[largest1]=a[largest1]-ts;
+        }
+	    else
+	    {
+	    	if((a[largest1]<=ts)&&a[largest1]!=0)
+            {
+                x=x+a[largest1];
+                printf("\n %s -> %d",pn[largest1],a[largest1]);
+                a[largest1]=0;
+	        }
+		}
+
+		if(a[largest2]>ts)
+        {
+           x=x+ts;
+           printf("\n %s -> %d",pn[largest2],ts);
+           a[largest2]=a[largest2]-ts;
+        }
+	    else
+	    {
+	    	if((a[largest2]<=ts)&&a[largest2]!=0)
+            {
+                x=x+a[largest2];
+                printf("\n %s -> %d",pn[largest2],a[largest2]);
+                a[largest2]=0;
+	        }
+		}
 }
-void avgt()
-{
-int proc[],n,bt[],quantum;
-int wt[n],tat[n],total_wt = 0,total_tat=0;
-findwaitingtime(proc,n,bt,wt,quantum);
-findturnaroundtime(proc,n,bt,wt,tat);
-printf("processes \n");
-printf("
+
