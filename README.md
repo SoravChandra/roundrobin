@@ -59,54 +59,5 @@ void Iteration(int a[],int size,int ts, int x,char pn[])
 {
 	  int largest1,largest2;
       
-        largest1 = a[0];
-        for(int H = 0; H< size; H++)
-		{
-            if (a[H]>largest1) 
-			{
-               largest1 = a[H];
-            }
-        }
         
-        largest2 = a[0];
-        for (int g=1;g<size;g++) 
-		{
-            if(a[g]>largest2 && a[g]<largest1){
-             largest2 = a[g];
-			 }
-        }
-		
-	   
-		if(a[largest1]>ts)
-        {
-           x=x+ts;
-           printf("\n %s -> %d",pn[largest1],ts);
-           a[largest1]=a[largest1]-ts;
-        }
-	    else
-	    {
-	    	if((a[largest1]<=ts)&&a[largest1]!=0)
-            {
-                x=x+a[largest1];
-                printf("\n %s -> %d",pn[largest1],a[largest1]);
-                a[largest1]=0;
-	        }
-		}
-
-		if(a[largest2]>ts)
-        {
-           x=x+ts;
-           printf("\n %s -> %d",pn[largest2],ts);
-           a[largest2]=a[largest2]-ts;
-        }
-	    else
-	    {
-	    	if((a[largest2]<=ts)&&a[largest2]!=0)
-            {
-                x=x+a[largest2];
-                printf("\n %s -> %d",pn[largest2],a[largest2]);
-                a[largest2]=0;
-	        }
-		}
-}
 
